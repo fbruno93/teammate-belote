@@ -1,0 +1,66 @@
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="library/bootstrap.min.css">
+    <style>
+        html, body {overflow: hidden;}
+        td, th {text-align: center;}
+    </style>
+</head>
+<body ng-controller="mainCtrl">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Belote - Panneau de jeu</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <button type="button" class="btn btn-dark ml-3" data-toggle="modal" data-target="#exampleModal">
+                Equipe
+            </button>
+            <button ng-click="next()" class="btn btn-dark ml-3">Match suivant ({{ current + 1 }})</button>
+        </div>
+        <span class="navbar-text">
+                <code>F11</code>
+        </span>
+    </nav>
+    
+    <div class="row">
+        <table class="table table-striped col-sm-2 mr-auto ml-auto" ng-repeat="table in tables">
+            <tr>
+                <th>Equipe</th>
+                <th>Equipe</th>
+            </tr>
+            <tr ng-repeat="(key, value) in table">
+                <td>{{ key }}</td>
+                <td>{{ value[current] }}</td>
+            </tr>
+        </table>
+    </div>
+        
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Combien d'équipe</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"></label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" ng-model="numberTeam">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="compute(numberTeam)">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="library/jquery.min.js"></script>
+    <script type="text/javascript" src="library/bootstrap.min.js"></script>
+    <script type="text/javascript" src="library/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
